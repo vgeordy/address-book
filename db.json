@@ -1,0 +1,28 @@
+{
+  "addresses": [
+    {
+      "id": "1",
+      "name": "Geordy Vincent",
+      "address": "123 street rd",
+      "email": "vgeordy21@gmail.com"
+    },
+    {
+      "id": "2",
+      "name": "Sheldon Cooper",
+      "address": "124 street rd",
+      "email": "shphysicsrocks@gmail.com"
+    },
+    {
+      "id": "3",
+      "name": "Kim Wexler",
+      "address": "125 street rd",
+      "email": "kimwexler@gmail.com"
+    },
+    {
+        "id": "4",
+        "name": "Test",
+        "address": "126 street rd",
+        "email": "test@gmail.com"
+      }
+  ]
+}
