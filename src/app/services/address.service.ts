@@ -33,4 +33,9 @@ export class AddressService {
     return this.http.put<Address>(url,address, httpOptions);
   }
 
+  addAddress(address: Address): Observable<Address> {
+    const url = this.apiUrl;
+    return this.http.post<Address>(url,address, httpOptions);
+  }
+
 }
