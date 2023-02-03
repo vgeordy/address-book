@@ -24,22 +24,23 @@
 
       <ng-container matColumnDef="actions">
         <th mat-header-cell *matHeaderCellDef> Actions </th>
-        <td mat-cell *matCellDef="let row of Address">
+        <td mat-cell *matCellDef="let row">
             <div >
                 <button 
-                  class="btn" 
-                  >Edit</button>
+                  class="btn"
+                  (click) = "openDialog(row)"
+                  >Edit
+                </button>
                 <button 
                   class="btn" 
                   [ngStyle]="{'background-color':'red'}" 
                   (click)="onDelete(row)"
                   >
                     Delete
-                </button> 
+                </button>
             </div>    
         </td>
       </ng-container>
-
       <tr class="mat-header-row-cell" mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
       <tr class="mat-row-cell" mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
