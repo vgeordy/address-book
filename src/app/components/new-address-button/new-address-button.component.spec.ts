@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NewaddressbuttonComponent } from './newaddressbutton.component';
+import { NewaddressbuttonComponent } from './new-address-button.component';
 
 describe('NewaddressbuttonComponent', () => {
   let component: NewaddressbuttonComponent;
