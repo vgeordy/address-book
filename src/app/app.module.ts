@@ -5,15 +5,15 @@ import { HttpClientModule } from '@angular/common/http';
 import {MatDialogModule} from '@angular/material/dialog'; 
 import {MatFormFieldModule} from '@angular/material/form-field'; 
 import { MatInputModule } from '@angular/material/input';
-import { FormsModule } from '@angular/forms';
+import {ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
+import {MatGridListModule} from '@angular/material/grid-list';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { NewaddressbuttonComponent } from './components/new-address-button/new-address-button.component';
 import { TableComponent } from './components/table/table.component';
 import { AddressDialogComponent } from './components/address-dialog/address-dialog.component';
-import { AddAddressComponent } from './components/add-address/add-address.component';
 
 @NgModule({
   declarations: [
@@ -21,8 +21,7 @@ import { AddAddressComponent } from './components/add-address/add-address.compon
     HeaderComponent,
     NewaddressbuttonComponent,
     TableComponent,
-    AddressDialogComponent,
-    AddAddressComponent
+    AddressDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +31,9 @@ import { AddAddressComponent } from './components/add-address/add-address.compon
     MatFormFieldModule,
     MatInputModule,
     FormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
+    MatGridListModule
   ],
   providers: [],
   bootstrap: [AppComponent]
