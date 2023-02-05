@@ -1,19 +1,16 @@
 <mat-dialog-content>
-  <div mat-dialog-content>
+  <form #addForm="ngForm" [formGroup]="addressService.addressForm" (ngSubmit)="onSubmit(addForm.value)">
     <mat-form-field>
-      <input matInput [(ngModel)]="data.name" placeholder="Name">
+      <input matInput formControlName ="name" placeholder="Name">
     </mat-form-field>
-
     <mat-form-field>
-      <input matInput="" [(ngModel)]="data.address" placeholder="Address">
+      <input matInput formControlName="address" placeholder="Address">
     </mat-form-field>
-
     <mat-form-field>
-      <input matInput="" [(ngModel)]="data.email" placeholder="Email">
+      <input matInput formControlName= "email" placeholder="Email">
     </mat-form-field>
-  </div>
-
-<div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">No Thanks</button>
-  <button class= "btn" mat-button [mat-dialog-close]="data">Ok</button>
+<div>
+  <button class="btn" mat-dialog-close mat-stroked-button color="primary" type="submit" [disabled]="!addressService.addressForm.valid">Submit</button>
+  <button class="btn" mat-button (click)="onClose()">Close</button>
 </div>
+</form>

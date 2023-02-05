@@ -1,7 +1,8 @@
-import { Component, EventEmitter, Inject, Output } from '@angular/core';
-import { AddressService } from 'src/app/services/address.service';
+import { Component, EventEmitter, Inject, OnInit, Output} from '@angular/core';
 import { Address } from 'src/app/Address';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { MatDialog, MatDialogRef} from '@angular/material/dialog';
+import { AddressService } from 'src/app/services/address.service';
+import { ApiService } from 'src/app/services/api.service';
 
 
 @Component({
@@ -10,17 +11,31 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialo
   styleUrls: ['./address-dialog.component.css']
 })
 
-export class AddressDialogComponent {
 
+export class AddressDialogComponent implements OnInit {
 
-  @Output() onEditAddress: EventEmitter<Address> = new EventEmitter();
-
-  constructor(public dialogRef: MatDialogRef<AddressDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: Address) {}
-
-  onNoClick(): void {
-    this.dialogRef.close();
+  constructor(public apiService: ApiService, public addressService: AddressService, public dialogRef: MatDialogRef<AddressDialogComponent>) {}
+  
+  ngOnInit() {
+    this.apiService.getAddresses();
+  }
+  
+  onSubmit(value: any): void {
+    if (this.addressService.addressForm.valid) {
+        if (!(this.addressService.addressForm.get('id')!.value) ) {
+          this.addressService.createAddress(value);
+      }else {
+        this.addressService.updateAddress(value);
+        this.onClose();
+      }
+    }
   }
 
+  onClose(): void {
+    this.addressService.addressForm.reset();
+    this.addressService.initializeFormGroup();
+    this.dialogRef.close();
+  }
 }
 
 
