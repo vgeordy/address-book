@@ -1,41 +1,61 @@
-import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import { Observable} from 'rxjs';
+import { Injectable, Output } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { BehaviorSubject, Observable, Subject} from 'rxjs';
 import { Address } from '../Address';
-import { ADDRESS } from 'src/app/mock-address';
-
-const httpOptions = {
-  headers: new HttpHeaders({
-    'Content-Type':'application/json'
-  })
-}
+import { ApiService } from './api.service';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class AddressService {
-  private apiUrl: string = "http://localhost:3000/addresses"
 
-  constructor(private http: HttpClient) { }
+  
+  
 
-  getAddresses():Observable<Address[]> {
-    return this.http.get<Address[]>(this.apiUrl);
+  addresses: Address[] = [];
+
+
+  public addressForm: FormGroup<Address> = new FormGroup<Address>({
+    id: new FormControl(null),
+    name: new FormControl('', Validators.required),
+    address: new FormControl('', Validators.required),
+    email: new FormControl('', Validators.required),
+  });
+
+  constructor(private apiService: ApiService) {
+    
   }
 
-  deleteAddress(address: Address): Observable<Address> {
-    const url = `${this.apiUrl}/${address.id}`;
-    return this.http.delete<Address>(url,httpOptions)
+  initializeFormGroup() {
+
+    this.addressForm.setValue({
+      id: null,
+      name: '',
+      address: '',
+      email: ''
+    });
   }
 
-  editAddress(address: Address): Observable<Address> {
-    const url = `${this.apiUrl}/${address.id}`;
-    return this.http.put<Address>(url,address, httpOptions);
+  updateAddress(input: Address) {
+    this.apiService.editAddress(input).subscribe();
+    
   }
 
-  addAddress(address: Address): Observable<Address> {
-    const url = this.apiUrl;
-    return this.http.post<Address>(url,address, httpOptions);
+  deleteAddress(input: Address) {
+    this.apiService.deleteAddress(input).subscribe(()=> (this.addresses = this.addresses.filter(a => a.id !== input.id)))
   }
+
+  createAddress(input: any) {
+    this.apiService.addAddress(input).subscribe((ad) => (this.addresses.push(ad)));
+  }
+
+  populateAddressForm(row: any) {
+    this.addressForm.setValue(row);
+  }
+
+  // onChange(): Observable<any> {
+  //   return this.addressUpdate.asObservable();
+  // }
 
 }
