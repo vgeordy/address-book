@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Address } from 'src/app/Address';
-import { AddressDialogComponent } from '../address-dialog/address-dialog.component';
+
 
 @Component({
   selector: 'app-new-address-button',
@@ -19,6 +18,5 @@ constructor() {}
 onAdd() {
   this.onAddAddress.emit();    
   };
-
 
 }
