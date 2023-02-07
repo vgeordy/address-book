@@ -5,5 +5,6 @@ export interface Address {
     name: FormControl<string | null>;
     address: FormControl<string | null>;
     email: FormControl<string | null>;
+    phNumber: FormControl<string | null>;
 }
 
