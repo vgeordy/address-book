@@ -2,41 +2,45 @@
 
     <table mat-table [dataSource]="this.addressService.addresses" class="mat-elevation-z8">
     <ng-container matColumnDef="id">
-            <th mat-header-cell *matHeaderCellDef> ID </th>
+            <th mat-header-cell *matHeaderCellDef>ID</th>
             <td mat-cell *matCellDef="let element"> {{element.id}} </td>
     </ng-container>
 
     <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <th mat-header-cell *matHeaderCellDef>NAME</th>
         <td mat-cell *matCellDef="let element"> {{element.name}} </td>
       </ng-container>
 
       <ng-container matColumnDef="address">
-        <th mat-header-cell *matHeaderCellDef> Address </th>
+        <th mat-header-cell *matHeaderCellDef>ADDRESS</th>
         <td mat-cell *matCellDef="let element"> {{element.address}} </td>
       </ng-container>
 
       <ng-container matColumnDef="email">
-        <th mat-header-cell *matHeaderCellDef> Email </th>
+        <th mat-header-cell *matHeaderCellDef>EMAIL</th>
         <td mat-cell *matCellDef="let element"> {{element.email}} </td>
       </ng-container>
 
+      <ng-container matColumnDef="phone-number">
+        <th mat-header-cell *matHeaderCellDef>PHONE</th>
+        <td mat-cell *matCellDef="let element"> {{element.phNumber}} </td>
+      </ng-container>
+
       <ng-container matColumnDef="actions">
-        <th mat-header-cell *matHeaderCellDef> Actions </th>
+        <th mat-header-cell *matHeaderCellDef>ACTIONS</th>
         <td mat-cell *matCellDef="let row">
             <div >
                 <button 
-                  class="btn"
+                  mat-icon-button
                   (click) = "this.uiService.editUIAddress(row)"
                   >
-                  Edit
+                  <mat-icon>edit</mat-icon>
                 </button>
                 <button 
-                  class="btn" 
-                  [ngStyle]="{'background-color':'red'}" 
+                  mat-icon-button
+                  [ngStyle]="{'color':'red', 'margin-left':'10px'}" 
                   (click)="this.addressService.deleteAddress(row)"
-                  >
-                  Delete
+                  ><mat-icon>delete</mat-icon>
                 </button>
             </div>    
         </td>
