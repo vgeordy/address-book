@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Address } from './Address';
 
 @Component({
   selector: 'app-root',
