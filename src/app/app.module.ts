@@ -8,12 +8,35 @@ import { MatInputModule } from '@angular/material/input';
 import {ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
 import {MatGridListModule} from '@angular/material/grid-list';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from "@angular/material/icon";
+import { MatMenuModule } from '@angular/material/menu';
+import {RouterModule, Routes} from "@angular/router"
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { NewaddressbuttonComponent } from './components/new-address-button/new-address-button.component';
 import { TableComponent } from './components/table/table.component';
 import { AddressDialogComponent } from './components/address-dialog/address-dialog.component';
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import { HomeComponent } from './components/home/home.component';
+import { AddressBookComponent } from './components/address-book/address-book.component';
+
+const appRoutes: Routes = [
+  {
+    path: "",
+    component: HomeComponent,
+    pathMatch: "full"
+
+  },
+  {
+  path: "orders/address-book",
+  component: AddressBookComponent,
+  pathMatch: "full"
+
+  }
+]
 
 @NgModule({
   declarations: [
@@ -21,7 +44,10 @@ import { AddressDialogComponent } from './components/address-dialog/address-dial
     HeaderComponent,
     NewaddressbuttonComponent,
     TableComponent,
-    AddressDialogComponent
+    AddressDialogComponent,
+    NavBarComponent,
+    HomeComponent,
+    AddressBookComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +59,12 @@ import { AddressDialogComponent } from './components/address-dialog/address-dial
     FormsModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    MatGridListModule
+    MatGridListModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatIconModule,
+    MatMenuModule,
+    RouterModule.forRoot(appRoutes, {enableTracing: true})
   ],
   providers: [],
   bootstrap: [AppComponent]
