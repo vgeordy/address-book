@@ -1,0 +1,28 @@
+<mat-toolbar class="mat-elevation-z1">
+
+<div class="title-section">
+<h1>HERSHEY</h1>
+
+</div>
+
+<div [ngStyle] ="{'margin': '10px'}" class="link-button-section">
+<a mat-button routerLink=""><mat-icon>home</mat-icon>HOME</a>
+<mat-menu #orderMenu="matMenu">
+<button mat-menu-item routerLink="orders/address-book"><mat-icon>import_contacts</mat-icon>ADDRESS BOOK</button>
+</mat-menu>
+<button mat-button [mat-menu-trigger-for]="orderMenu"><mat-icon>shopping_cart</mat-icon>ORDER</button>
+<a mat-button><mat-icon>description</mat-icon>TEMPLATES</a>
+<a mat-button><mat-icon>inventory</mat-icon>INVENTORY</a>
+<a mat-button><mat-icon>settings</mat-icon>PRODUCT CONFIGURATION</a>
+<a mat-button><mat-icon>assessment</mat-icon>REPORTS</a>
+<a mat-button><mat-icon>admin_panel_settings</mat-icon>ADMINISTRATOR ACTIONS</a>
+</div>
+
+<div class="spacer"></div>
+<a mat-icon-button><mat-icon>notifications</mat-icon></a>
+<a mat-icon-button><mat-icon>manage_accounts</mat-icon></a>
+<a mat-icon-button><mat-icon>help</mat-icon></a>
+<a mat-icon-button><mat-icon>group</mat-icon></a>
+
+
+</mat-toolbar>
