@@ -1,16 +1,25 @@
 <mat-dialog-content>
-  <form #addForm="ngForm" [formGroup]="addressService.addressForm" (ngSubmit)="onSubmit(addForm.value)">
-    <mat-form-field>
-      <input matInput formControlName ="name" placeholder="Name">
+  <form class="dialog-form" #addForm="ngForm" [formGroup]="addressService.addressForm" (keyup.enter)="onSubmit(addForm.value)" (ngSubmit)="onSubmit(addForm.value)">
+    <h1 *ngIf="">ADDRESS UPDATE</h1>
+    <mat-form-field appearance="outline">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName ="name" >
     </mat-form-field>
-    <mat-form-field>
-      <input matInput formControlName="address" placeholder="Address">
+    <mat-form-field appearance="outline">
+      <mat-label>Address</mat-label>
+      <input matInput formControlName="address" >
     </mat-form-field>
-    <mat-form-field>
-      <input matInput formControlName= "email" placeholder="Email">
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName= "email">
     </mat-form-field>
-<div>
-  <button class="btn" mat-dialog-close mat-stroked-button color="primary" type="submit" [disabled]="!addressService.addressForm.valid">Submit</button>
-  <button class="btn" mat-button (click)="onClose()">Close</button>
+    <mat-form-field appearance="outline">
+      <mat-label>Phone Number</mat-label>
+      <input matInput formControlName= "phNumber">
+    </mat-form-field>
+<div class="dialog-button-container">
+  <button mat-button (click)="onClose()">Close</button>
+  <div class="spacer"></div>
+  <button mat-dialog-close mat-stroked-button color="primary" type="submit" [disabled]="!addressService.addressForm.valid">Submit</button>
 </div>
 </form>
